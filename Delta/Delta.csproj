@@ -43,6 +43,12 @@
     <Reference Include="LabApi">
       <HintPath>..\..\..\Plugin\Delta\Delta\bin\x64\Release\LabApi.dll</HintPath>
     </Reference>
+    <Reference Include="Mirror">
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server\SCPSL_Data\Managed\Mirror.dll</HintPath>
+    </Reference>
+    <Reference Include="Mirror.Components">
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\SCP Secret Laboratory Dedicated Server\SCPSL_Data\Managed\Mirror.Components.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine.CoreModule">
