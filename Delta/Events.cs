@@ -8,16 +8,13 @@ using PlayerRoles;
 
 namespace Delta
 {
-	// Token: 0x02000002 RID: 2
 	public class Events : CustomEventsHandler
 	{
-		// Token: 0x06000001 RID: 1 RVA: 0x00002048 File Offset: 0x00000248
 		public override void OnServerRoundStarted()
 		{
 			Plugin.DeltaCor = Timing.RunCoroutine(this.StartDelta());
 		}
 
-		// Token: 0x06000002 RID: 2 RVA: 0x0000205C File Offset: 0x0000025C
 		public override void OnWarheadStarting(WarheadStartingEventArgs ev)
 		{
 			if (ev.IsAutomatic || ev.Player == null)
@@ -41,10 +38,19 @@ namespace Delta
 			}
 		}
 
-		// Token: 0x06000003 RID: 3 RVA: 0x00002104 File Offset: 0x00000304
 		private IEnumerator<float> StartDelta()
 		{
-			return new Events.<StartDelta>d__2(0);
+			yield return Timing.WaitForSeconds(1f);
+			bool started = false;
+			while (!started)
+			{
+				if (Round.Duration.TotalMinutes >= Plugin.Status.Config.StartTime)
+				{
+					Delta.Start();
+					started = true;
+				}
+				yield return Timing.WaitForSeconds(1f);
+			}
 		}
 	}
 }
