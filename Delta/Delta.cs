@@ -9,16 +9,18 @@ namespace Delta
 {
 	public class Delta
 	{
-		public static void Start()
+        private static bool IsDeltaStarted = false;
+
+        public static void Start()
 		{
-			Delta.IsDeltaStarted = true;
-			if (Delta.IsDeltaStarted)
+			IsDeltaStarted = true;
+			if (IsDeltaStarted)
 			{
 				Cassie.Message(Plugin.Status.Config.DeltaCassie ?? "", false, false, true, "");
 				Map.SetColorOfLights(Color.yellow);
 				Timing.CallDelayed(90f, () =>
 				{
-					if (Delta.IsDeltaStarted)
+					if (IsDeltaStarted)
 					{
 						Warhead.Shake();
 						foreach (Player item in Player.List)
@@ -40,9 +42,9 @@ namespace Delta
 
 		public static void Stop()
 		{
-			if (Delta.IsDeltaStarted)
+			if (IsDeltaStarted)
 			{
-				Delta.IsDeltaStarted = false;
+				IsDeltaStarted = false;
 			}
 			Map.ResetColorOfLights();
 			Cassie.Message("DELTA Warhead Stoped", false, false, true, "");

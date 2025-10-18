@@ -67,5 +67,6 @@ namespace Delta
 		public static CoroutineHandle DeltaCor;
 
 		public static Plugin Status;
-	}
+
+    }
 }
